@@ -18,7 +18,8 @@
 .env.test.local
 .env.production.local
 api.js
-
+pouet.txt
+pouetv2.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
