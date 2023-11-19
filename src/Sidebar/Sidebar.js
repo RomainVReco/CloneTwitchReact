@@ -11,7 +11,6 @@ function Sidebar() {
             const result = await api.get('https://api.twitch.tv/helix/streams?first=10')
             console.log("API Top Streams : "+ result)
             let dataArray = result.data.data
-            console.log("Typeof dataArray : " +typeof(dataArray))
             let topTenStreams = dataArray.map(stream => {
                 return stream.user_id
             })
@@ -20,21 +19,18 @@ function Sidebar() {
                 tempUrl += `id=${topTenStreams[i]}&`
             }
             var userUrl = tempUrl.slice(0,tempUrl.length-1)
-            setTopStreams(dataArray)
 
-            var dataArrayUsers
-            const fetchDataUser = async () => {
-                const resultUsers = await api.get('https://api.twitch.tv/helix/users?'+userUrl)
-                console.log("API User : "+ resultUsers)
-                dataArrayUsers = resultUsers.data.data
-            }
 
-            dataArray.forEach(element => {
-                if (element.user_id == dataArrayUsers.id){
-                    element.truepic = dataArrayUsers.profile_image_url
-                }
-                
-            });
+            const resultUsers = await api.get('https://api.twitch.tv/helix/users?'+userUrl)
+            var dataArrayUsers = resultUsers.data.data
+            let i = 0
+            let finalArray = dataArray.map(stream => {
+                stream.truepic = dataArrayUsers[i].profile_image_url
+                i += 1
+                return stream
+            })
+
+            setTopStreams(finalArray)
         }
 
         fetchDataStream()
@@ -47,7 +43,7 @@ function Sidebar() {
             <h2 className="titreSidebar">Chaînes recommandées</h2>
             <ul className="listeStream">
                 {topStreams.map((stream, index)=>(
-                     <li className="containerFlexSidebar">
+                     <li key={index} className="containerFlexSidebar">
                         <img src={stream.truepic} alt="" className="profilePicRonde" />
                         <div className="streamUser">{stream.user_name}</div>
                         <div className="viewerRight">
