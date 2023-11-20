@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import api from '../../api';
+import {Link} from 'react-router-dom'
 
 
 function Games() {
@@ -17,9 +18,15 @@ function Games() {
                 .replace("{width}", "250")
                 .replace("{height}", "300")
                 game.box_art_url = newUrl
+                let newName = game.name
+                .replaceAll(" ", "-")
+                .toLowerCase()
+                game.dashedName = newName
                 return game
               })
+              
                 setGames(finalArray)
+                
               }
             fetchData();
     }, [])
@@ -29,11 +36,23 @@ function Games() {
           <h1 className="titreGames">Jeux les plus populaires</h1>
           <div className="flexAccueil">
             {games.map((game, index) => (
+
               <div key={index} className="carteGames">
                 <img src={game.box_art_url} alt="jeu profile pic" className="imgCarte" />
                 <div className="cardBodyGames">
                   <h5 className="titreCartesGames">{game.name}</h5>
-                  <div className="btnCarte">Regarder {game.name}</div>
+
+                  <Link className="lien" 
+                  to={{
+                    pathname:"game/"+game.dashedName, 
+                    state:{
+                      idGame:game.id}
+                    }}
+                  >
+
+                    <div className="btnCarte">Regarder {game.name}</div>
+                  </Link>
+
                 </div>
 
               </div>

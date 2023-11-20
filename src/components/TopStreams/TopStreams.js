@@ -52,7 +52,7 @@ function TopStreams(){
                         <img src={channel.thumbnail_url} className="imgCarte"  alt="jeu" />
                         <div className="cardBodyStream">
                             <h5 className="titreCartesStream">{channel.user_name}</h5>
-                            <p className="textStream">Jeu : {channel.gameName}</p>
+                            <p className="textStream">Jeu : {channel.game_name}</p>
                             <p className="txtStreamViewver">Viewers : {channel.viewer_count}</p>
 
                             <Link className='lien' to={{pathname:`/live/${channel.user_login}`}}>
