@@ -43,9 +43,16 @@ Partie Header
   width: 600px;
 }
 
-/* .lien{
+.lien{
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
 
-} */
+.lien:hover {
+  text-decoration: none;
+  color: #fff;
+}
 
 .logo {
   margin-top: 5px;
@@ -110,6 +117,58 @@ Partie Sidebar
 
 .listeStream {
   padding: 0 0 0 10px;
+}
+
+.containerFlexSidebar {
+  padding: 10px 15px 8px 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
+}
+
+.containerFlexSidebar:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.profilePicRonde {
+  width:30px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.streamUser {
+  color: #f1f1f1;
+  flex-basis: 50%;
+  overflow: hidden;
+  text-align: left;
+}
+
+.gameNameSidebar{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #aeabb6;
+  margin-top: 5px;
+}
+
+.viewerRight {
+  color: #aeabb6;
+  flex-basis: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pointRouge {
+  width:5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-right: 3px;
+  background: crimson;
+
 }
 
 @media screen and (max-width:1200px) {
@@ -214,4 +273,57 @@ Partie Sidebar
   .flexAccueil{
     padding-left: 0px;
   }
+}
+
+/* TOP STREAMS */
+
+.carteStream {
+  height: 420px;
+  width: 320px;
+  margin: 0 30px 30px 0;
+  transition: all 0.4s;
+  border-radius: 10px;
+  box-shadow: 2px 11px 36px -16px rgba(0,0,0,0.75);
+}
+
+.carteStream:hover{
+  transform: translateY(-5px);
+}
+
+.titreCartesStream {
+  font-size: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  font-weight: 500;
+}
+
+.cardBodyStream {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.txtStream {
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.viewers {
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width:559px) {
+  .carteStream {
+    margin: 0 0 30px 0;
+  }
+  
 }
