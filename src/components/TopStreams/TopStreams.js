@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import api from '../../api';
+import { Link } from 'react-router-dom';
 
 
 function TopStreams(){
@@ -10,7 +11,6 @@ function TopStreams(){
 
         const fetchDataStream = async () => {
             const result = await api.get('https://api.twitch.tv/helix/streams')
-            console.log("API Top Streams : "+ result)
             let dataArray = result.data.data
             let topStreams = dataArray.map(stream => {
                 return stream.user_id
@@ -54,7 +54,11 @@ function TopStreams(){
                             <h5 className="titreCartesStream">{channel.user_name}</h5>
                             <p className="textStream">Jeu : {channel.gameName}</p>
                             <p className="txtStreamViewver">Viewers : {channel.viewer_count}</p>
-                            <div className="btnCarte">Regarder {channel.user_name}</div>
+
+                            <Link className='lien' to={{pathname:`/live/${channel.user_login}`}}>
+                                <div className="btnCarte">Regarder {channel.user_name}</div>
+                            </Link>
+
                         </div>
 
 
