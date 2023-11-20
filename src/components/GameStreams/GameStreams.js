@@ -53,7 +53,7 @@ function GameStreams() {
                             <h5 className="titreCartesStream">{stream.user_name}</h5>
                             <p className="txtStream">Nombre de viewers : {stream.viewer_count}</p>
                             
-                            <Link className="lien" to={{pathname:`/live/${stream.login}`}} >
+                            <Link className="lien" to={{pathname:`/live/${stream.user_login}`}} >
 
                             <div className="btnCarte">Regarder {stream.user_name}</div>
                             </Link>
