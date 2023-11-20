@@ -43,12 +43,8 @@ function Games() {
                   <h5 className="titreCartesGames">{game.name}</h5>
 
                   <Link className="lien" 
-                  to={{
-                    pathname:"game/"+game.dashedName, 
-                    state:{
-                      idGame:game.id}
-                    }}
-                  >
+                  to={"game/"+game.name}
+                  state={{idGame:game.id}}>
 
                     <div className="btnCarte">Regarder {game.name}</div>
                   </Link>

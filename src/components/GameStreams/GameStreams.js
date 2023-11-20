@@ -11,7 +11,6 @@ function GameStreams() {
     console.log("location : ", location.state.idGame)
     const [streamData, setStreamData] = useState([])
     const [viewers, setViewers] = useState(0)
-    sdf =
 
     useEffect (() => {
         const fetchData = async () => {
@@ -47,7 +46,7 @@ function GameStreams() {
 
             <div className="flexAccueil">
                 {streamData.map((stream, index) => (
-                    <div key={index} className="carteGameSTreams">
+                    <div key={index} className="carteGameStreams">
 
                         <img src={stream.thumbnail_url} alt="jeu carte img" className="imgCarte" />
                         <div className="cardBodyGameStreams">
