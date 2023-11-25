@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import api from '../../api'
 import {Link, useParams} from 'react-router-dom'
+import Erreur from '../Erreur/Erreur'
 
 function Resultats() {
 
@@ -12,19 +13,27 @@ function Resultats() {
     useEffect (() => {
         const fetchData = async () => {
             const result = await api.get(`https://api.twitch.tv/helix/users?login=${cleanSearch}`)
-            console.log(result)
+            console.log("résultats : ", result)
+            console.log("result transformé : ", typeof(result))
 
-            setStreamerInfo(result.data.data)
+            if (result.data.data === 0) {
+                setResult(false)
+            } else {
+                setStreamerInfo(result.data.data)
+            }
         }
         fetchData()
     },[])
 
     return (
+
+        result ? 
         <div>
             <div className="containerDecaleResultats">
                 <h4>Résultats de recherche : </h4>
 
-                {streamerInfo.map((stream, index) => {
+                {streamerInfo.map((stream, index) => (
+                    
                     <div key={index} className="carteResultats">
                         <img src={stream.profile_image_url} alt="resultat profile" className="imgCarte" />
                         <div className="cardBodyResults">
@@ -32,14 +41,16 @@ function Resultats() {
                             <div className="txtResult">
                                 {stream.description}
                             </div>
-                            <Link className='lien' to={{pathname:`/live/${stream.user_name}`}}>
+                            <Link className='lien' to={{pathname:`/live/${stream.login}`}}>
                                 <div className="btnCarte btnResult">Regarder {stream.display_name}</div>
                             </Link>
                         </div>
                     </div>
-                })}
+                ))}
             </div>
         </div>
+        :
+        <Erreur />
     )
 }
 
