@@ -71,9 +71,9 @@ function Header() {
                     <form action="" className="formSubmit" onSubmit={handleSubmit}>
                         <input required value={searchInput} onChange={(e) => handleKeyPress(e)} type="text" className="inputRecherche" />
                         <Link className='lien' to={{pathname:`/resultats/${searchInput}`}}>
-                        <button type="submit">
-                            <img src={search} alt="icone loupe" className="logoLoupe" />
-                        </button>
+                            <button type="submit">
+                                <img src={search} alt="icone loupe" className="logoLoupe" />
+                            </button>
                         </Link>
                     </form>
                 </li>
